@@ -1,9 +1,15 @@
 require_relative 'film'
+require_relative 'json_reader'
 require_relative 'txt_files_reader'
+require_relative 'kinopoisk_reader'
 
 class Cinematheque
-  def self.new_from_file(path_to_films_dir)
-    new(TxtFilesReader.read_films_info(path_to_films_dir))
+  def self.new_from_file(path_to_file, reader)
+    new(reader.read_films_info(path_to_file))
+  end
+
+  def self.new_from_kinopoisk(update_json: true)
+    new(KinopoiskReader.read_films_info(update_json))
   end
 
   def initialize(films_info)

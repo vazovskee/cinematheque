@@ -1,11 +1,11 @@
 require 'json'
 
 module JsonReader
-  def self.read_film_info(path_to_json)
+  def self.read_films_info(path_to_json)
     begin
       file = File.read(path_to_json, encoding: 'UTF-8')
     rescue SystemCallError
-      abort 'Error: json-file with films was not found'
+      abort 'Error: json-file with films_txt was not found'
     end
 
     films_info = JSON.parse(file)['films']
