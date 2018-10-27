@@ -8,8 +8,8 @@ class Cinematheque
     new(reader.read_films_info(path_to_file))
   end
 
-  def self.new_from_kinopoisk(update_json: true)
-    new(KinopoiskReader.read_films_info(update_json))
+  def self.new_from_kinopoisk(path_to_kinpoisk_json, update_json: false)
+    new(KinopoiskReader.read_films_info(path_to_kinpoisk_json, update_json))
   end
 
   def initialize(films_info)

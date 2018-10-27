@@ -1,6 +1,13 @@
+require_relative 'lib/args_parser'
 require_relative 'lib/cinematheque'
 
-cinematheque = Cinematheque.new_from_kinopoisk(update_json: false)
+VERSION = '0.0.1'.freeze
+KINOPOISK_JSON = File.join(__dir__, 'data',
+                           'films_json', 'top500_kinpoisk.json').freeze
+
+options = ArgsParser.parse(ARGV, VERSION)
+cinematheque = Cinematheque.new_from_kinopoisk(KINOPOISK_JSON,
+                                               update_json: options[:update])
 
 directors = cinematheque.directors_list
 

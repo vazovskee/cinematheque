@@ -5,7 +5,7 @@ module JsonReader
     begin
       file = File.read(path_to_json, encoding: 'UTF-8')
     rescue SystemCallError
-      abort 'Error: json-file with films_txt was not found'
+      raise 'Error: json-file with films was not found'
     end
 
     films_info = JSON.parse(file)['films']

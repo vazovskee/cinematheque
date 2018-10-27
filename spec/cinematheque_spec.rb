@@ -1,7 +1,7 @@
 require 'rspec'
-require 'cinematheque'
+require_relative '../lib/cinematheque'
 
-FIXTURES = File.join(Dir.pwd, 'spec', 'fixtures').freeze
+FIXTURES = File.join(__dir__, 'fixtures').freeze
 
 describe 'Cinematheque' do
   it 'initializes collection with one film' do
@@ -20,7 +20,7 @@ describe 'Cinematheque' do
                                         'Алексей Балабанов']
   end
 
-  it 'tries to initialize collection with no films_txt' do
+  it 'tries to initialize collection with no films' do
     empty_dir = File.join(FIXTURES, 'empty_dir')
     expect { Cinematheque.new_from_file(empty_dir, TxtFilesReader) }
       .to raise_error(RuntimeError, 'Empty film directory')

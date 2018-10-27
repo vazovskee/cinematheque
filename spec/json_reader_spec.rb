@@ -1,7 +1,7 @@
 require 'rspec'
-require 'json_reader'
+require_relative '../lib/json_reader'
 
-FIXTURES = File.join(Dir.pwd, 'spec', 'fixtures').freeze
+FIXTURES = File.join(__dir__, 'fixtures').freeze
 
 describe 'FileReader' do
   describe '#read_film_info' do
@@ -31,6 +31,13 @@ describe 'FileReader' do
                                { title: 'Счастливые дни',
                                  director: 'Алексей Балабанов',
                                  release_year: '1991' }]
+    end
+
+    it 'tries to read from empty dir' do
+      wrong_path = ''
+      expect { JsonReader.read_films_info(wrong_path) }
+        .to raise_error(RuntimeError,
+                        'Error: json-file with films was not found')
     end
   end
 end

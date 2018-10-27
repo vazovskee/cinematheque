@@ -1,5 +1,5 @@
 require 'rspec'
-require 'film'
+require_relative '../lib/film'
 
 describe 'Film' do
   it 'initializes film' do

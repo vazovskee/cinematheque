@@ -1,7 +1,7 @@
 require 'rspec'
-require 'txt_files_reader'
+require_relative '../lib/txt_files_reader'
 
-FIXTURES = File.join(Dir.pwd, 'spec', 'fixtures').freeze
+FIXTURES = File.join(__dir__, 'fixtures').freeze
 
 describe 'FileReader' do
   describe '#read_film_info' do
